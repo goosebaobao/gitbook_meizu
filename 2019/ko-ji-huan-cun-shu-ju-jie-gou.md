@@ -31,11 +31,13 @@ guava 提供了 Table 接口，实际上是个二维 map，查看 guava 的源�
 
 一个标准的 KO 应该满足如下条件
 
-* 继承自 Object
+* 继承自 Object，且为 final 类
 * 必须提供带参数的构造方法，且该方法为唯一的构造方法
+* 建议使用静态工厂方法来创建实例，此时构造方法应为私有的
 * 在构造方法里计算出 hashcode
 * 类属性是 final 的
 * 必须重写 hashCode\(\)， equals\(\)
+* 建议重写 toString\(\)
 
 示例：一个组合 imei\(整数\)，sn\(字符串\)的 KO
 
@@ -85,9 +87,66 @@ public final class ImeiSnKo {
 
 ### KO 的优势
 
-和拼接字符串构造 key 来对比
+#### 和拼接字符串构造 key 来对比
 
 * 含义明确，提升代码可读性
 * 性能优势：无需进行字符串拼接操作
 * 内存占用优势：没有产生新的字符串对象
+
+#### 和通过移位构造 key 来对比
+
+* 代码可读性的提升是明显的，移位运算确实很难理解
+* 性能上应该还是移位更优
+* 消除隐患：移位运算要小心计算移动的位数，避免随着业务发展构造 key 的整数值突破预留的位数，KO 完全不需要担心，下面示例一下我改造后的代码
+
+```java
+public final class TripleIntKey {
+
+    private final int i;
+    private final int j;
+    private final int k;
+
+    private final int hash;
+
+
+    public static final TripleIntKey create(int i, int j, int k) {
+        return new TripleIntKey(i, j, k);
+    }
+
+
+    private TripleIntKey(int i, int j, int k) {
+        this.i = i;
+        this.j = j;
+        this.k = k;
+        this.hash = 31 * (31 * i + j) + k;
+    }
+
+
+    @Override
+    public int hashCode() {
+        return hash;
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj instanceof TripleIntKey) {
+            TripleIntKey ko = (TripleIntKey) obj;
+            return i == ko.i && j == ko.j && k == ko.k;
+        }
+        return false;
+    }
+
+
+    @Override
+    public String toString() {
+        return new StringBuilder().append(i).append('-').append(j).append('-').append(k).toString();
+    }
+}
+
+```
 
