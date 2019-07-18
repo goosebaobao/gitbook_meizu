@@ -170,3 +170,11 @@ result = ImmutableSet.copyOf(Sets.intersection(result, sets.get(n)));
     }
 ```
 
+## 再回首
+
+今天用 sonarlint 分析了项目代码，关于 size\(\) 方法，是这样提示的
+
+![](../.gitbook/assets/size.PNG)
+
+这意味着，如果只是判断集合是否为空，不应该使用 size\(\) 方法，而应该使用 isEmpty\(\)：size\(\) 方法的时间复杂度_**可能**_是 O\(n\)，而 isEmpty\(\) 的时间复杂度_**应该**_是 O\(1\)
+
