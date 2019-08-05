@@ -30,6 +30,7 @@ public final class SlotAlgorithmType {
         List<SlotAlgorithmType> list = slotAlgorithmTypeMapper.listAll();
         Map<Integer, SlotAlgorithmType> map = Maps.newHashMapWithExpectedSize(list.size());
         for (SlotAlgorithmType type : list) {
+            // 常量化
             type.setAlgType(type.getAlgType().intern());
             map.put(type.getSlotId(), type);
         }
