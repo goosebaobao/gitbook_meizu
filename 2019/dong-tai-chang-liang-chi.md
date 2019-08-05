@@ -2,7 +2,17 @@
 
 ## 背景
 
+
+
+| 广告创意 | 广告位类型 |
+| :---: | :---: |
+| ![&#x5E7F;&#x544A;&#x521B;&#x610F;](idea.png) | ![&#x5E7F;&#x544A;&#x4F4D;&#x7C7B;&#x578B;](../.gitbook/assets/slottype.PNG) |
+
+
+
 先看 2 张图
+
+
 
 ![&#x5E7F;&#x544A;&#x521B;&#x610F;](../.gitbook/assets/idea.png)
 
