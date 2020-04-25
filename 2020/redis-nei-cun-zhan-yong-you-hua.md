@@ -51,15 +51,15 @@ String reqid = "0a80114e01717684281e000249ef";
 int member;
 // 第一个广告曝光
 member = 0 * 2;
-if (sadd(reqid, member) ==1) // 曝光未重复;
+if (sadd(reqid, member) == 1) // 曝光未重复;
   do something...
 // 第一个广告点击
 member = 0 * 2 + 1;
-if (sadd(reqid, member) ==1) // 点击未重复;
+if (sadd(reqid, member) == 1) // 点击未重复;
   do something...
 // 第二个广告曝光
 member = 1 * 2;
-if (sadd(reqid, member) ==1) // 曝光未重复;
+if (sadd(reqid, member) == 1) // 曝光未重复;
   do something...
 
 ......
@@ -90,9 +90,9 @@ if (sadd(reqid, member) ==1) // 曝光未重复;
 // 第三个广告曝光，广告序号为 2
 int offset = 2;
 boolean result = setbit(key, offset, true);
-if (result){
+if (result) {
   // 重复曝光
-}else {
+} else {
   // 首次曝光
 }
 ```
