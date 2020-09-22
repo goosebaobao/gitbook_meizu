@@ -2,6 +2,7 @@
 
 * [说明](README.md)
 * [2020](2020/README.md)
+  * [判断 webapp 启动成功](2020/pan-duan-webapp-qi-dong-cheng-gong.md)
   * [redis 数据结构和内存消耗](2020/redis-shu-ju-jie-gou-he-nei-cun-xiao-hao.md)
   * [redis 内存占用优化实例](2020/redis-nei-cun-zhan-yong-you-hua.md)
 * [2019](2019/README.md)
