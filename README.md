@@ -6,7 +6,7 @@ description: 在魅族做过的一些工作分享
 
 ## 停止更新声明
 
-关注我的动态，请移步我的个人网站 [https://refusea.com](https://refusea.com)
+关注我的动态，请移步我的个人网站 [拒海个人网站](https://refusea.com) \([https://refusea.com](https://refusea.com)\)
 
 2020-12-25
 
